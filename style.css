@@ -785,6 +785,12 @@ body {
 
 }
 
+.explore_items_container {
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
 /* Search Input styled like Penpot rectangle */
 #searchBar {
   width: 100%;
