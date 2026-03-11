@@ -786,9 +786,47 @@ body {
 }
 
 .explore_items_container {
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 520px;
+  width: 1460px;
+  min-height: 280px;
+  padding: 42px 56px;
+  transform: translateX(-50%);
+  border: 1px solid #000000;
+  border-radius: 40px;
+  background: #ffffff;
+}
+
+.explore_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.explore_item_center {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.explore_item_icon {
+  width: 88px;
+  height: 88px;
+  display: block;
+  color: #000000;
+}
+
+.explore_item_label {
+  color: rgba(6, 71, 251, 1);
+  font-size: 36px;
+  line-height: 1.2;
+  text-align: center;
 }
 
 /* Search Input styled like Penpot rectangle */
