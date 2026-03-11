@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northern Contaminants Database</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="search-page">
+    <!-- Page title banner -->
+    <section class="search-title-banner" aria-labelledby="search-page-title">
+      <h1 class="search-page-title" id="search-page-title">
+        Northern Contaminants Database
+      </h1>
+    </section>
+
+    <!-- Search input and sort controls -->
+    <section class="search-controls" aria-label="Search controls">
+      <div class="search-controls-inner">
+        <form class="search-form" action="#" method="get">
+          <!-- Main search input -->
+          <div class="search-input-wrap">
+            <label class="visuallyHidden" for="search-page-input">Search database</label>
+            <input
+              class="search-page-input"
+              id="search-page-input"
+              name="q"
+              type="search"
+              placeholder=""
+            >
+            <button class="search-clear-button" type="reset" aria-label="Clear search">
+              &times;
+            </button>
+          </div>
+
+            <button class="search-submit-button" type="submit">Search</button>
+        </form>
+
+        <!-- Placeholder sort dropdown: replace options with real sort modes when search logic is connected -->
+        <div class="sort-control">
+          <label class="sort-label" for="search-sort">Sort by:</label>
+          <select class="sort-select" id="search-sort" name="sort">
+            <option value="relevance">Relevance</option>
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main content area: filters on the left, results in the center -->
+    <section class="search-content" aria-label="Search page content">
+      <!-- Placeholder filters: replace counts and options with values generated from your database -->
+      <aside class="search-filters" aria-label="Filters">
+        <!-- Publication date filter group -->
+        <div class="filter-group">
+          <h2 class="filter-group-title">Publication Date</h2>
+          <label class="filter-radio">
+            <input type="radio" name="publication-date" checked>
+            <span>Last Year</span>
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="publication-date">
+            <span>Last 5 years</span>
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="publication-date">
+            <span>Last 10 years</span>
+          </label>
+        </div>
+
+        <!-- Location filter group -->
+        <div class="filter-group">
+          <h2 class="filter-group-title">Location</h2>
+          <ul class="filter-list">
+            <li><a href="#">Western Canadian Arctic</a><span>10</span></li>
+            <li><a href="#">Cambridge Bay</a><span>9</span></li>
+            <li><a href="#">Kitikmeot Region</a><span>7</span></li>
+            <li><a href="#">Kugluktuk</a><span>4</span></li>
+          </ul>
+        </div>
+
+        <!-- Contaminant filter group -->
+        <div class="filter-group">
+          <h2 class="filter-group-title">Contaminant</h2>
+          <ul class="filter-list">
+            <li><a href="#">Mercury</a><span>10</span></li>
+            <li><a href="#">POPs</a><span>9</span></li>
+            <li><a href="#">Selenium</a><span>7</span></li>
+            <li><a href="#">Microplastics</a><span>4</span></li>
+          </ul>
+        </div>
+
+        <!-- Animal filter group -->
+        <div class="filter-group">
+          <h2 class="filter-group-title">Animal</h2>
+          <ul class="filter-list">
+            <li><a href="#">Ringed Seals</a><span>10</span></li>
+            <li><a href="#">Polar Bear</a><span>9</span></li>
+            <li><a href="#">Beluga</a><span>7</span></li>
+            <li><a href="#">Arctic Char</a><span>4</span></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Search results container -->
+      <div class="search-results-panel">
+        <!-- Placeholder results block: replace with dynamically rendered search results, pagination, and empty states -->
+        <div class="search-results-placeholder">
+          <div class="search-results-placeholder-card">
+            <p class="search-results-kicker">Search results</p>
+            <h2 class="search-results-title">Results will render here</h2>
+            <p class="search-results-copy">
+              Use this panel for your Supabase search output, pagination, and result cards.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
