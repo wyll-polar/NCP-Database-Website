@@ -38,10 +38,11 @@
     </div>
 
     <!-- Primary search -->
-    <div class="searchBarContainer">
+    <form class="searchBarContainer landing-search-form" action="search.html" method="get">
       <label for="searchBar" class="visuallyHidden">Search</label>
-      <input type="text" id="searchBar" name="search" placeholder="Search..." />
-    </div>
+      <input type="text" id="searchBar" name="q" placeholder="Search..." />
+      <button type="submit" class="landing-search-button">Search</button>
+    </form>
 
     <!-- Explore section heading -->
     <div class="shape text explore-4556bbc07f28">
@@ -58,7 +59,7 @@
     <!-- Explore items card -->
     <div class="explore_items_container">
       <!-- Browse locations icon -->
-      <div class="explore_item explore_item_left">
+      <a class="explore_item explore_item_left" href="locations.html" aria-label="Browse locations">
         <svg class="explore_item_icon explore_item_icon_location" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
           fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22
@@ -68,10 +69,10 @@
           <circle cx="12" cy="10" r="3" />
         </svg>
         <span class="explore_item_label">Browse Locations</span>
-      </div>
+      </a>
 
       <!-- Browse contaminants icon -->
-      <div class="explore_item explore_item_center">
+      <a class="explore_item explore_item_center" href="contaminants.html" aria-label="Browse contaminants">
         <svg class="explore_item_icon explore_item_icon_contaminants" xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 202 182" fill="none" stroke="black" stroke-width="8" stroke-linecap="round"
           stroke-linejoin="round">
@@ -92,7 +93,7 @@
           <path d="M52.77 105.48H133.15" />
         </svg>
         <span class="explore_item_label">Browse Contaminants</span>
-      </div>
+      </a>
 
       <!-- Browse animals icon -->
       <div class="explore_item explore_item_right">
@@ -126,5 +127,7 @@
       </div>
     </div>
   </div>
+  <script src="supabase-config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

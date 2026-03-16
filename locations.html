@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Locations | Northern Contaminants Database</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="search-page">
+    <!-- Page title banner -->
+    <section class="search-title-banner" aria-labelledby="locations-page-title">
+      <h1 class="search-page-title" id="locations-page-title">
+        Northern Contaminants Database
+      </h1>
+    </section>
+
+    <!-- Locations page content -->
+    <section class="locations-page-content" aria-labelledby="locations-heading">
+      <div class="locations-page-shell">
+        <section class="locations-list-panel" aria-label="Browse locations">
+          <h2 class="locations-heading" id="locations-heading">Browse Locations:</h2>
+
+          <!-- Supabase-rendered locations will be inserted into this grid -->
+          <div class="locations-grid" id="locations-grid">
+            <p class="locations-status-message">Loading locations...</p>
+          </div>
+        </section>
+
+        <aside class="locations-map-panel" aria-label="Map preview">
+          <!-- Placeholder map container: replace this with your embedded ArcGIS map later -->
+          <div class="locations-map-placeholder">
+            <div class="locations-map-placeholder-inner">
+              <p class="locations-map-kicker">Map</p>
+              <p class="locations-map-copy">
+                ArcGIS map placeholder. Location markers and interactivity will go here later.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
