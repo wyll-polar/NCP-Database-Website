@@ -138,6 +138,48 @@ function renderLocations(locations) {
     .join("");
 }
 
+function renderContaminantStatus(message) {
+  const grid = document.getElementById("contaminants-grid");
+
+  if (!grid) {
+    return;
+  }
+
+  grid.innerHTML = `<p class="contaminants-status-message">${message}</p>`;
+}
+
+function renderContaminants(contaminants) {
+  const grid = document.getElementById("contaminants-grid");
+
+  if (!grid) {
+    return;
+  }
+
+  if (!Array.isArray(contaminants) || contaminants.length === 0) {
+    renderContaminantStatus("No contaminants found.");
+    return;
+  }
+
+  grid.innerHTML = contaminants
+    .map((contaminant) => {
+      const name = contaminant["Name"] ?? "Unnamed contaminant";
+      const imageUrl = contaminant["image_url text"]?.trim();
+      const imageMarkup = imageUrl
+        ? `<img class="contaminant-card-image" src="${imageUrl}" alt="${name}">`
+        : `<div class="contaminant-card-image-fallback">No image</div>`;
+
+      return `
+        <article class="contaminant-card">
+          <div class="contaminant-card-image-wrap">
+            ${imageMarkup}
+          </div>
+          <p class="contaminant-card-label">${name}</p>
+        </article>
+      `;
+    })
+    .join("");
+}
+
 async function initializeLocationsPage() {
   const grid = document.getElementById("locations-grid");
 
@@ -168,10 +210,41 @@ async function initializeLocationsPage() {
   renderLocations(data);
 }
 
+async function initializeContaminantsPage() {
+  const grid = document.getElementById("contaminants-grid");
+
+  if (!grid) {
+    return;
+  }
+
+  supabaseClient = initializeSupabase();
+
+  if (!supabaseClient) {
+    renderContaminantStatus("Supabase is not configured yet.");
+    return;
+  }
+
+  renderContaminantStatus("Loading contaminants...");
+
+  const { data, error } = await supabaseClient
+    .from("Contaminants")
+    .select("*")
+    .order("Name", { ascending: true });
+
+  if (error) {
+    console.error("Failed to load contaminants:", error);
+    renderContaminantStatus(`Could not load contaminants: ${error.message}`);
+    return;
+  }
+
+  renderContaminants(data);
+}
+
 function initializeApp() {
   initializeLandingPage();
   initializeSearchPage();
   initializeLocationsPage();
+  initializeContaminantsPage();
 }
 
 if (document.readyState === "loading") {

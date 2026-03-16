@@ -1452,6 +1452,85 @@ body {
   line-height: 1.5;
 }
 
+.contaminants-page-content {
+  width: 100%;
+  padding: 28px 24px 56px;
+}
+
+.contaminants-page-shell {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+}
+
+.contaminants-heading {
+  margin: 0 0 30px;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  font-weight: 700;
+}
+
+.contaminants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  gap: 28px 42px;
+  align-items: start;
+}
+
+.contaminant-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.contaminant-card-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.contaminant-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.contaminant-card-image-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f1f5fa;
+  color: #536273;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.contaminant-card-label {
+  margin: 0;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.contaminants-status-message {
+  margin: 0;
+  color: #68727f;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
 .supabase-test-panel {
   width: min(100%, 1100px);
   margin: 0 auto;
@@ -1515,6 +1594,10 @@ body {
 
   .locations-map-placeholder {
     min-height: 280px;
+  }
+
+  .contaminants-grid {
+    justify-content: center;
   }
 }
 

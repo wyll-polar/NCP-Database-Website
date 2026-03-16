@@ -14,6 +14,20 @@
         Northern Contaminants Database
       </h1>
     </section>
+
+    <!-- Contaminants page content -->
+    <section class="contaminants-page-content" aria-labelledby="contaminants-heading">
+      <div class="contaminants-page-shell">
+        <section class="contaminants-list-panel" aria-label="Browse contaminants">
+          <h2 class="contaminants-heading" id="contaminants-heading">Browse Contaminants:</h2>
+
+          <!-- Supabase-rendered contaminants will be inserted into this grid -->
+          <div class="contaminants-grid" id="contaminants-grid">
+            <p class="contaminants-status-message">Loading contaminants...</p>
+          </div>
+        </section>
+      </div>
+    </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
