@@ -46,6 +46,17 @@ function getSearchQueryFromUrl() {
   return params.get("q")?.trim() ?? "";
 }
 
+function navigateToSearchWithQuery(query) {
+  const searchUrl = new URL("search.html", window.location.href);
+  const trimmedQuery = query.trim();
+
+  if (trimmedQuery) {
+    searchUrl.searchParams.set("q", trimmedQuery);
+  }
+
+  window.location.href = searchUrl.toString();
+}
+
 function initializeLandingPage() {
   const landingForm = document.querySelector(".landing-search-form");
   const landingInput = document.getElementById("searchBar");
@@ -58,13 +69,7 @@ function initializeLandingPage() {
     event.preventDefault();
 
     const query = landingInput.value.trim();
-    const searchUrl = new URL("search.html", window.location.href);
-
-    if (query) {
-      searchUrl.searchParams.set("q", query);
-    }
-
-    window.location.href = searchUrl.toString();
+    navigateToSearchWithQuery(query);
   });
 }
 
@@ -133,9 +138,16 @@ function renderLocations(locations) {
   grid.innerHTML = locations
     .map((location) => {
       const label = location["Location"] ?? "Unnamed location";
-      return `<button class="location-card" type="button">${label}</button>`;
+      return `<button class="location-card" type="button" data-location-query="${label}">${label}</button>`;
     })
     .join("");
+
+  grid.querySelectorAll(".location-card").forEach((button) => {
+    button.addEventListener("click", () => {
+      const locationQuery = button.dataset.locationQuery ?? "";
+      navigateToSearchWithQuery(locationQuery);
+    });
+  });
 }
 
 function renderContaminantStatus(message) {
@@ -164,17 +176,21 @@ function renderContaminants(contaminants) {
     .map((contaminant) => {
       const name = contaminant["Name"] ?? "Unnamed contaminant";
       const imageUrl = contaminant["image_url text"]?.trim();
+      const infoUrl = contaminant["info_url"]?.trim();
       const imageMarkup = imageUrl
         ? `<img class="contaminant-card-image" src="${imageUrl}" alt="${name}">`
         : `<div class="contaminant-card-image-fallback">No image</div>`;
+      const cardTag = infoUrl ? "a" : "article";
+      const cardHref = infoUrl ? ` href="${infoUrl}" target="_blank" rel="noopener noreferrer"` : "";
+      const clickableClass = infoUrl ? " contaminant-card-link" : "";
 
       return `
-        <article class="contaminant-card">
+        <${cardTag} class="contaminant-card${clickableClass}"${cardHref}>
           <div class="contaminant-card-image-wrap">
             ${imageMarkup}
           </div>
           <p class="contaminant-card-label">${name}</p>
-        </article>
+        </${cardTag}>
       `;
     })
     .join("");

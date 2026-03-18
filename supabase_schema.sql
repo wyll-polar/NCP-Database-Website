@@ -5,6 +5,8 @@ CREATE TABLE public.Contaminants (
   id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   Name text,
+  image_url text text,
+  info_url text,
   CONSTRAINT Contaminants_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.Locations (
@@ -18,6 +20,7 @@ CREATE TABLE public.Matrix (
   id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   Name text,
+  icon_url text,
   CONSTRAINT Matrix_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.NCP Reports (

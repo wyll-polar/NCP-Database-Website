@@ -1485,6 +1485,11 @@ body {
   text-align: center;
 }
 
+.contaminant-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .contaminant-card-image-wrap {
   display: flex;
   align-items: center;
