@@ -51,56 +51,45 @@
 
     <!-- Main content area: filters on the left, results in the center -->
     <section class="search-content" aria-label="Search page content">
-      <!-- Placeholder filters: replace counts and options with values generated from your database -->
+      <!-- Search filters -->
       <aside class="search-filters" aria-label="Filters">
-        <!-- Publication date filter group -->
+        <!-- Result type filter group -->
         <div class="filter-group">
-          <h2 class="filter-group-title">Publication Date</h2>
+          <h2 class="filter-group-title">Type</h2>
           <label class="filter-radio">
-            <input type="radio" name="publication-date" checked>
-            <span>Last Year</span>
+            <input type="radio" name="result-type" value="all" checked>
+            <span>All result types</span>
           </label>
           <label class="filter-radio">
-            <input type="radio" name="publication-date">
-            <span>Last 5 years</span>
+            <input type="radio" name="result-type" value="ncp-reports">
+            <span>NCP Reports</span>
           </label>
           <label class="filter-radio">
-            <input type="radio" name="publication-date">
-            <span>Last 10 years</span>
+            <input type="radio" name="result-type" value="publications">
+            <span>Publications</span>
+          </label>
+          <label class="filter-radio">
+            <input type="radio" name="result-type" value="pdc">
+            <span>PDC (Polar Data Catalog)</span>
           </label>
         </div>
 
-        <!-- Location filter group -->
-        <div class="filter-group">
-          <h2 class="filter-group-title">Location</h2>
-          <ul class="filter-list">
-            <li><a href="#">Western Canadian Arctic</a><span>10</span></li>
-            <li><a href="#">Cambridge Bay</a><span>9</span></li>
-            <li><a href="#">Kitikmeot Region</a><span>7</span></li>
-            <li><a href="#">Kugluktuk</a><span>4</span></li>
-          </ul>
-        </div>
-
-        <!-- Contaminant filter group -->
-        <div class="filter-group">
+        <!-- Dynamic contaminant filter group -->
+        <div class="filter-group dynamic-filter-group" id="contaminant-filter-group" hidden>
           <h2 class="filter-group-title">Contaminant</h2>
-          <ul class="filter-list">
-            <li><a href="#">Mercury</a><span>10</span></li>
-            <li><a href="#">POPs</a><span>9</span></li>
-            <li><a href="#">Selenium</a><span>7</span></li>
-            <li><a href="#">Microplastics</a><span>4</span></li>
-          </ul>
+          <div class="dynamic-filter-options" id="contaminant-filter-options"></div>
         </div>
 
-        <!-- Animal filter group -->
-        <div class="filter-group">
+        <!-- Dynamic location filter group -->
+        <div class="filter-group dynamic-filter-group" id="location-filter-group" hidden>
+          <h2 class="filter-group-title">Location</h2>
+          <div class="dynamic-filter-options" id="location-filter-options"></div>
+        </div>
+
+        <!-- Dynamic animal filter group -->
+        <div class="filter-group dynamic-filter-group" id="animal-filter-group" hidden>
           <h2 class="filter-group-title">Animal</h2>
-          <ul class="filter-list">
-            <li><a href="#">Ringed Seals</a><span>10</span></li>
-            <li><a href="#">Polar Bear</a><span>9</span></li>
-            <li><a href="#">Beluga</a><span>7</span></li>
-            <li><a href="#">Arctic Char</a><span>4</span></li>
-          </ul>
+          <div class="dynamic-filter-options" id="animal-filter-options"></div>
         </div>
       </aside>
 

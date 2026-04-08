@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Categories | Northern Contaminants Database</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="search-page">
+    <!-- Page title banner -->
+    <section class="search-title-banner" aria-labelledby="categories-page-title">
+      <h1 class="search-page-title" id="categories-page-title">
+        Northern Contaminants Database
+      </h1>
+    </section>
+
+    <!-- Categories page content -->
+    <section class="categories-page-content" aria-labelledby="categories-heading">
+      <div class="categories-page-shell">
+        <section class="categories-list-panel" aria-label="Browse categories">
+          <h2 class="categories-heading" id="categories-heading">Categories</h2>
+
+          <!-- Supabase-rendered Matrix Categories will be inserted here -->
+          <div class="categories-list" id="categories-list">
+            <p class="categories-status-message">Loading categories...</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

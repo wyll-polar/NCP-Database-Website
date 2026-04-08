@@ -21,20 +21,29 @@ CREATE TABLE public.Matrix (
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   Name text,
   icon_url text,
-  CONSTRAINT Matrix_pkey PRIMARY KEY (id)
+  category integer,
+  CONSTRAINT Matrix_pkey PRIMARY KEY (id),
+  CONSTRAINT Matrix_category_fkey FOREIGN KEY (category) REFERENCES public.Matrix Categories(id)
+);
+CREATE TABLE public.Matrix Categories (
+  id integer GENERATED ALWAYS AS IDENTITY NOT NULL,
+  created_at timestamp with time zone NOT NULL DEFAULT now(),
+  Categories text,
+  CONSTRAINT Matrix Categories_pkey PRIMARY KEY (id)
 );
 CREATE TABLE public.NCP Reports (
   id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   Project Lead text,
-  funding_start_year integer,
-  funding_end_year integer,
+  funding_start_year text,
+  funding_end_year text,
   Location bigint,
   Matrix bigint,
   Contaminant bigint,
   summary text,
   URL text,
   Saved to Google text,
+  Project Title text,
   CONSTRAINT NCP Reports_pkey PRIMARY KEY (id),
   CONSTRAINT NCP Reports_Location_fkey FOREIGN KEY (Location) REFERENCES public.Locations(id),
   CONSTRAINT NCP Reports_Matrix_fkey FOREIGN KEY (Matrix) REFERENCES public.Matrix(id),

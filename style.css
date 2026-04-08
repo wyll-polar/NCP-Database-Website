@@ -1351,6 +1351,68 @@ body {
   line-height: 1.5;
 }
 
+.search-results-list {
+  display: grid;
+  gap: 18px;
+  min-height: 540px;
+  padding: 26px 30px 48px;
+  background: #ffffff;
+}
+
+.search-results-count {
+  margin: 0 0 8px;
+  color: #68727f;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+}
+
+.search-result-card {
+  padding: 18px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #555de9;
+  background: #ffffff;
+}
+
+.search-result-type {
+  margin: 0 0 8px;
+  color: #555de9;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.search-result-title {
+  margin: 0 0 8px;
+  color: #111111;
+  font-family: Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.search-result-title-link {
+  color: #0647fb;
+  text-decoration: underline;
+}
+
+.search-result-meta {
+  margin: 0 0 10px;
+  color: #596675;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.search-result-summary {
+  margin: 0;
+  color: #303030;
+  font-family: Arial, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
 .locations-page-content {
   width: 100%;
   padding: 28px 24px 56px;
@@ -1530,6 +1592,88 @@ body {
 }
 
 .contaminants-status-message {
+  margin: 0;
+  color: #68727f;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+.categories-page-content {
+  width: 100%;
+  padding: 28px 24px 56px;
+}
+
+.categories-page-shell {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+}
+
+.categories-heading {
+  margin: 0 0 30px;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  font-weight: 700;
+}
+
+.categories-list {
+  display: grid;
+  gap: 28px;
+  width: min(100%, 900px);
+}
+
+.category-group {
+  display: grid;
+  gap: 14px;
+}
+
+.category-subtitle {
+  margin: 0;
+  padding: 16px 20px;
+  border-left: 5px solid #555de9;
+  background: #f4f7fb;
+  color: #1f2a36;
+  font-family: Arial, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.category-matrix-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-left: 20px;
+}
+
+.category-matrix-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 9px 14px;
+  border-radius: 6px;
+  background: #8fa6c3;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.category-matrix-link:hover {
+  background: #7f97b7;
+}
+
+.category-empty-message {
+  margin: 0;
+  color: #68727f;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.categories-status-message {
   margin: 0;
   color: #68727f;
   font-family: Arial, sans-serif;
