@@ -138,6 +138,21 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function getSafeHttpUrl(value) {
+  const trimmedValue = String(value ?? "").trim();
+
+  if (!trimmedValue) {
+    return "";
+  }
+
+  try {
+    const url = new URL(trimmedValue, window.location.href);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
 function getSelectedResultType() {
   return document.querySelector('input[name="result-type"]:checked')?.value ?? "all";
 }
@@ -333,8 +348,9 @@ function renderSearchResults(results, query) {
 
   const resultMarkup = results
     .map((result) => {
-      const titleMarkup = result.url
-        ? `<a class="search-result-title-link" href="${escapeHtml(result.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(result.title)}</a>`
+      const resultUrl = getSafeHttpUrl(result.url);
+      const titleMarkup = resultUrl
+        ? `<a class="search-result-title-link" href="${escapeHtml(resultUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(result.title)}</a>`
         : escapeHtml(result.title);
       const metaMarkup = result.meta.length
         ? `<p class="search-result-meta">${escapeHtml(result.meta.join(" | "))}</p>`
@@ -606,7 +622,7 @@ function renderLocationStatus(message) {
     return;
   }
 
-  grid.innerHTML = `<p class="locations-status-message">${message}</p>`;
+  grid.innerHTML = `<p class="locations-status-message">${escapeHtml(message)}</p>`;
 }
 
 function renderLocations(locations) {
@@ -624,7 +640,7 @@ function renderLocations(locations) {
   grid.innerHTML = locations
     .map((location) => {
       const label = location["Location"] ?? "Unnamed location";
-      return `<button class="location-card" type="button" data-location-query="${label}">${label}</button>`;
+      return `<button class="location-card" type="button" data-location-query="${escapeHtml(label)}">${escapeHtml(label)}</button>`;
     })
     .join("");
 
@@ -643,7 +659,7 @@ function renderContaminantStatus(message) {
     return;
   }
 
-  grid.innerHTML = `<p class="contaminants-status-message">${message}</p>`;
+  grid.innerHTML = `<p class="contaminants-status-message">${escapeHtml(message)}</p>`;
 }
 
 function renderContaminants(contaminants) {
@@ -661,13 +677,13 @@ function renderContaminants(contaminants) {
   grid.innerHTML = contaminants
     .map((contaminant) => {
       const name = contaminant["Name"] ?? "Unnamed contaminant";
-      const imageUrl = contaminant["image_url text"]?.trim();
-      const infoUrl = contaminant["info_url"]?.trim();
+      const imageUrl = getSafeHttpUrl(contaminant["image_url text"]);
+      const infoUrl = getSafeHttpUrl(contaminant["info_url"]);
       const imageMarkup = imageUrl
-        ? `<img class="contaminant-card-image" src="${imageUrl}" alt="${name}">`
+        ? `<img class="contaminant-card-image" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(name)}">`
         : `<div class="contaminant-card-image-fallback">No image</div>`;
       const cardTag = infoUrl ? "a" : "article";
-      const cardHref = infoUrl ? ` href="${infoUrl}" target="_blank" rel="noopener noreferrer"` : "";
+      const cardHref = infoUrl ? ` href="${escapeHtml(infoUrl)}" target="_blank" rel="noopener noreferrer"` : "";
       const clickableClass = infoUrl ? " contaminant-card-link" : "";
 
       return `
@@ -675,7 +691,7 @@ function renderContaminants(contaminants) {
           <div class="contaminant-card-image-wrap">
             ${imageMarkup}
           </div>
-          <p class="contaminant-card-label">${name}</p>
+          <p class="contaminant-card-label">${escapeHtml(name)}</p>
         </${cardTag}>
       `;
     })
@@ -689,7 +705,7 @@ function renderCategoryStatus(message) {
     return;
   }
 
-  list.innerHTML = `<p class="categories-status-message">${message}</p>`;
+  list.innerHTML = `<p class="categories-status-message">${escapeHtml(message)}</p>`;
 }
 
 function renderCategories(categories, matrixEntries = []) {
@@ -716,14 +732,14 @@ function renderCategories(categories, matrixEntries = []) {
               const searchUrl = new URL("search.html", window.location.href);
               searchUrl.searchParams.set("q", entryName);
 
-              return `<a class="category-matrix-link" href="${searchUrl.toString()}">${entryName}</a>`;
+              return `<a class="category-matrix-link" href="${escapeHtml(searchUrl.toString())}">${escapeHtml(entryName)}</a>`;
             })
             .join("")
         : `<p class="category-empty-message">No entries in this category yet.</p>`;
 
       return `
         <section class="category-group">
-          <h3 class="category-subtitle">${label}</h3>
+          <h3 class="category-subtitle">${escapeHtml(label)}</h3>
           <div class="category-matrix-list">
             ${entryMarkup}
           </div>
