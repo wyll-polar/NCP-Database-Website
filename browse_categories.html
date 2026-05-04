@@ -7,12 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="site-header">
+    <a class="site-brand" href="index.html" aria-label="Northern Contaminants Database home">
+      <span class="site-brand-mark">NCD</span>
+      <span class="site-brand-text">Northern Contaminants Database</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="site-nav-link" href="index.html">Home</a>
+      <a class="site-nav-link" href="search.html">Search</a>
+      <a class="site-nav-link" href="locations.html">Locations</a>
+      <a class="site-nav-link" href="contaminants.html">Contaminants</a>
+      <a class="site-nav-link is-active" href="browse_categories.html">Categories</a>
+    </nav>
+  </header>
+
   <main class="search-page">
     <!-- Page title banner -->
     <section class="search-title-banner" aria-labelledby="categories-page-title">
-      <h1 class="search-page-title" id="categories-page-title">
-        Northern Contaminants Database
-      </h1>
+      <p class="eyebrow">Browse matrix and subject areas</p>
+      <h1 class="search-page-title" id="categories-page-title">Categories</h1>
     </section>
 
     <!-- Categories page content -->
@@ -29,6 +42,16 @@
       </div>
     </section>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer-logos" aria-label="Program partners">
+      <img src="images/ncp-logo.png" alt="Northern Contaminants Program">
+      <img src="images/polar-logo.png" alt="Polar Knowledge Canada">
+    </div>
+    <nav class="site-footer-links" aria-label="Footer navigation">
+      <a href="#">Privacy</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="script.js"></script>
