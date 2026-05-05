@@ -669,14 +669,18 @@ function renderContaminants(contaminants) {
     return;
   }
 
-  if (!Array.isArray(contaminants) || contaminants.length === 0) {
+  const validContaminants = Array.isArray(contaminants)
+    ? contaminants.filter((contaminant) => String(contaminant["Name"] ?? "").trim())
+    : [];
+
+  if (validContaminants.length === 0) {
     renderContaminantStatus("No contaminants found.");
     return;
   }
 
-  grid.innerHTML = contaminants
+  grid.innerHTML = validContaminants
     .map((contaminant) => {
-      const name = contaminant["Name"] ?? "Unnamed contaminant";
+      const name = String(contaminant["Name"]).trim();
       const imageUrl = getSafeHttpUrl(contaminant["image_url text"]);
       const infoUrl = getSafeHttpUrl(contaminant["info_url"]);
       const imageMarkup = imageUrl
